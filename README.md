@@ -1,3 +1,3 @@
 # Speech-Reconstruction-Hypernetworks
 
-Currently done on mnist dataset
+Currently wgan done on mnist dataset

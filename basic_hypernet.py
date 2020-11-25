@@ -71,7 +71,7 @@ for f in frequencies:
         dataset.append((f, t, np.sin(f*t)))
 size = len(dataset)
 print(size)
-for step in range(1, 1001):
+for step in range(1, 5001):
   # Put dataset here : We fit a curve for A*sin(ft), A=1; f=frequency; t= time period
     idx = np.random.randint(low=0, high=size, size=batch_size)[0]
     # print(step, idx)
@@ -90,13 +90,14 @@ for step in range(1, 1001):
         preds = infer_model(t)
         loss = loss_fn(y, preds)
         loss_accum += loss
+        
 
-        # Train only inner model.
-
-        print("Loss : ", loss)
-        if step%100 == 0:
-            print("Loss : ", loss)
+        # print("Loss : ", loss)
+        if step%25 == 0:
+            print("Loss : ", loss_accum)
             var = generated_parameters.numpy()
             print('statistics of the generated parameters: '+'Mean, {:2.3f}, var {:2.3f}, min {:2.3f}, max {:2.3f}'.format(var.mean(), var.var(), var.min(), var.max()))
-    grads = tape.gradient(loss, hyper.trainable_weights)
-    optimizer.apply_gradients(zip(grads, hyper.trainable_weights))
+            # Train only inner model.
+            grads = tape.gradient(loss_accum, hyper.trainable_weights)
+            optimizer.apply_gradients(zip(grads, hyper.trainable_weights))
+            loss_accum = 0.0

@@ -1,8 +1,5 @@
-# Speech-Reconstruction-Hypernetworks
-
-- Run basic_hypernet.py for now
-- Tested with Tensorflow 1.15
+# Applications of Hypernets
 
 # TO-DO
-  1. Add Accuracy Metrics
-  2. Plot predictions on a sine curve
+  1. Use hypernets for Audio+Video Classification
+  2. Hypernets for Audio+Video Generation

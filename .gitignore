@@ -1,0 +1,6 @@
+__pycache__
+temp
+results
+*.png
+*.npy
+.vscode
